@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MANGAL-NAV 2.0 - NASA Space Apps 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+  <div class="logo">MANGAL<span>-NAV 2.0</span></div>
+  <div class="tagline">Click 2 points, AI finds safest path on Mars | NASA Space Apps 2026</div>
+  <div class="badge">Real NASA Data + A* O(n log n)</div>
+</div>
+<div class="main">
+  <div id="map"></div>
+  <div class="sidebar">
+    <div class="panel ai-box">
+      <h3>🤖 AI Command Box</h3>
+      <input id="aiInput" placeholder='Try: Go to nearest safe zone' />
+      <button onclick="handleAICommand()">Execute AI Command</button>
+      <div id="aiResponse" class="ai-res">Awaiting command... Click START then END on map.</div>
+    </div>
+    <div class="panel stats">
+      <h3>📊 Mission Analytics (NASA MOLA)</h3>
+      <div class="stat"><span>Distance</span><b id="dist">--</b></div>
+      <div class="stat"><span>Elevation Gain</span><b id="elev">--</b></div>
+      <div class="stat"><span>Battery Cost</span><b id="batt">--</b></div>
+      <div class="stat"><span>Path Safety</span><b id="safety">--</b></div>
+      <div class="stat"><span>Algorithm</span><b>A* O(n log n)</b></div>
+      <div class="stat"><span>Location</span><b>Jezero Crater</b></div>
+    </div>
+    <div class="panel controls">
+      <h3>🛰️ Controls</h3>
+      <button class="secondary" onclick="loadRealCraters()">Regenerate Hazards</button>
+      <button class="secondary" onclick="clearPath()">Clear Path</button>
+      <p class="hint">👉 GREEN = START (Rover) | RED = END (Target) | RED Circles = Craters (No-Go). Real NASA Viking + MOLA tiles.</p>
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="astar.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
